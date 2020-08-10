@@ -31,7 +31,7 @@ const productosController = {
             });
     },
     seccion: function(req, res){
-        db.secciones.findAll({attributes: ['seccion_id', 'nombre']})
+        db.secciones.findAll({attributes: ['seccion_id', 'nombre'],  include: [{association: "productos"}]})
         .then(function(secciones){
             for(let i = 0; i < secciones.length; i++){
             secciones[i].setDataValue("detalle", "http://localhost:3000/api/productos/seccion" )
